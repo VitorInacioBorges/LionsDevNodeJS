@@ -20,6 +20,7 @@ function updatePrompt() {
     promptMessage += `3 - Numbers ----------------- [${includeNumbers ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
     promptMessage += `4 - Especials Characters ---- [${includeEspecial ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
     promptMessage += "Enter numbers to toggle options (e.g., '13' to activate Caps and Numbers), then 'P' to proceed or '0' to close! --> ";
+    console.log(includeCaps);
     rl.setPrompt(promptMessage);
     rl.prompt();
 }
