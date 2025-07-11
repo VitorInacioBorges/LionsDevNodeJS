@@ -14,30 +14,39 @@ let includeEspecial = true;
 
 function updatePrompt() {
     console.clear();
-    let promptMessage = "Write the type of characters you want to include in your generated password:\n";
-    promptMessage += `1 - Capslock letters -------- [${includeCaps ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
-    promptMessage += `2 - Letters ----------------- [${includeLetters ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
-    promptMessage += `3 - Numbers ----------------- [${includeNumbers ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
-    promptMessage += `4 - Especials Characters ---- [${includeEspecial ? 'ACTIVATED' : 'DEACTIVATED'}]\n`;
-    promptMessage += "Enter numbers to toggle options (e.g., '13' to activate Caps and Numbers), then 'P' to proceed or '0' to close! --> ";
-    rl.setPrompt(promptMessage);
+    rl.setPrompt(`Write the type of characters you want to include in your generated password:
+    1 - Capslock letters -------- [${includeCaps ? 'ACTIVATED' : 'DEACTIVATED'}]
+    2 - Letters ----------------- [${includeLetters ? 'ACTIVATED' : 'DEACTIVATED'}]
+    3 - Numbers ----------------- [${includeNumbers ? 'ACTIVATED' : 'DEACTIVATED'}]
+    4 - Especials Characters ---- [${includeEspecial ? 'ACTIVATED' : 'DEACTIVATED'}]
+    Enter numbers to toggle options (e.g., '13' to activate Caps and Numbers), then 'P' to proceed or '0' to close! --> `);
     rl.prompt();
 }
 
-console.clear();
 updatePrompt();
 rl.on('line', (input) => {
-    if(isNaN(input)){
-        console.log("Invalid number!\n");
-        rl.prompt();
-    } else if (input == 'P'){
-        rl.question("\nEnter the length you want for your password: ", (lengthInput) => {
-            if(isNaN(lengthInput) || lengthInput < 1){
-                console.log("Invalid length! Try again!");
+    input = input.trim().toUpperCase();
+
+    if(input === '0'){
+        console.clear();
+        console.log("Program CLOSED!");
+        rl.close();
+    }
+    else if (input == 'P'){
+        if(!includeCaps && !includeLetters && !includeNumbers && !includeEspecial) {
+            updatePrompt();
+            console.log("\nYou must select at least one type of character to generate a password!");
+            return;
+        }
+        rl.question("Enter the length you want for your password: ", (lengthInput) => {
+            const length = parseInt(lengthInput);
+
+            if(isNaN(length) || length < 1){
                 updatePrompt();
+                console.log("\nInvalid length! Press 'P' to proceed once more!");
+                return;
             }
 
-            let password = '';
             let availableCharacters = '';
             if (includeLetters) availableCharacters += characters;
             if (includeCaps) availableCharacters += capsCharacters;
@@ -46,41 +55,32 @@ rl.on('line', (input) => {
 
             if (availableCharacters.length === 0) {
                 console.log("No characters selected, it is not possible to generate a password!");
-                rl.prompt();
+                updatePrompt();
                 return;
             }
-            console.log(`\nYour generated password is: ${password}\n`);
-            updatePrompt();
-        })
-    } else {
-        let validToggle = false;
-        switch(input){
-                case 0:
-                    rl.close();
-                    break;
-                case 1:
-                    includeCaps = false;
-                    validToggle = true;
-                    updatePrompt()
-                    break;
-                case 2:
-                    includeLetters = !includeLetters;
-                    validToggle = true;
-                    break;
-                case 3:
-                    includeNumbers = !includeNumbers;
-                    validToggle = true;
-                    break;
-                case 4:
-                    includeEspecial = !includeNumbers;
-                    validToggle = true;
-                    break;
-                default:
-                    break;
+            
+            let password = '';
+            for(let i = 0; i < length; i++){
+                const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+                password += availableCharacters[randomIndex];
             }
-        if (!validToggle && input !== 'P' && input !== '0') {
-            console.log("Invalid input! Enter numbers to toggle options, 'G' to generate or '0' to close the program.");
+            updatePrompt();
+            console.log(`\nYour generated password is: ${password}\n`);
+        })
+    }
+    else if (/^[1-4]+$/.test(input)) {
+        for (let i = 0; i < input.length; i++) {
+            switch(input[i]) {
+                case '1': includeCaps = !includeCaps; break;
+                case '2': includeLetters = !includeLetters; break;
+                case '3': includeNumbers = !includeNumbers; break;
+                case '4': includeEspecial = !includeEspecial; break;
+            }
         }
         updatePrompt();
+    }
+    else {
+        updatePrompt();
+        console.log("\nInvalid input! Use numbers (1–4), 'P' to proceed, or '0' to exit.");
     }
 })
