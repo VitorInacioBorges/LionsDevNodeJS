@@ -12,6 +12,12 @@ let includeLetters = true;
 let includeNumbers = true;
 let includeEspecial = true;
 
+function generatePassword(){
+    for(let i = 0; i < length; i++){
+        const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+        password += availableCharacters[randomIndex];
+    }
+}
 function updatePrompt() {
     console.clear();
     rl.setPrompt(`Write the type of characters you want to include in your generated password:
@@ -65,7 +71,7 @@ rl.on('line', (input) => {
                 password += availableCharacters[randomIndex];
             }
             updatePrompt();
-            console.log(`\nYour generated password is: ${password}\n`);
+            console.log(`\nYour generated password is: ${password}\nPress 'P' to generate another password or '0' to exit!`);
         })
     }
     else if (/^[1-4]+$/.test(input)) {
