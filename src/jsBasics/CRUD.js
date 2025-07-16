@@ -167,5 +167,4 @@ function highest_lowest(){
     }
     rl.question('', menuInput);
 }
-
 menuInput();
