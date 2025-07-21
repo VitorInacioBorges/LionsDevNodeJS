@@ -1,3 +1,7 @@
+// A program that defines an object representing a favorite painting
+// It includes properties such as the name of the painting, artist, year, location, and meaning.
+// The program then logs a message to the console describing the painting.
+
 let pinturaFavorita = {
     nomePintura: "Sol Nascente",
     nomeArtista: "Claude Monet",

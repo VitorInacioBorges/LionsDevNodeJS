@@ -1,3 +1,6 @@
+// A program that calculates the average of two grades input by the user
+// and ensures that the grades are valid (between 0 and 10).
+
 let mediaNotas;
 const readline = require('readline');
 const rl = readline.createInterface({

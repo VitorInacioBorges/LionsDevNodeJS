@@ -1,3 +1,9 @@
+// A program that allows users to guess a random number
+// It generates a random number and prompts the user to guess it.
+// The user can keep guessing until they get it right or choose to exit.
+// It provides feedback on whether the guess is too high or too low.
+// And it keeps track of the number of attempts and the user's score.
+
 // With Functions:
 /*
 const readline1 = require('readline');

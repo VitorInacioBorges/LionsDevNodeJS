@@ -1,3 +1,7 @@
+// a program that displays the multiplication table for a number
+// It prompts the user to enter a number between 1 and 10
+// and then prints the multiplication table for that number.
+
 const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,

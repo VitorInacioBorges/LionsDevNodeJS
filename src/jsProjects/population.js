@@ -1,3 +1,6 @@
+// a program that calculates the population growth of two cities A and B
+// It uses a loop to simulate the growth over the years based on given growth rates.
+
 const percentA = 3 / 100;
 const percentB = 1.5 / 100;
 let A = 80000;

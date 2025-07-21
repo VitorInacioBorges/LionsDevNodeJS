@@ -1,3 +1,7 @@
+// A program that generates a random password based on user-selected character types
+// It allows the user to choose whether to include uppercase letters, lowercase letters, numbers, and special characters.
+// The program then generates a password based on the selected criteria.
+
 const characters = 'abcdefghijklmnopqrstuvwxyz';
 const capsCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numbers = '1234567890';

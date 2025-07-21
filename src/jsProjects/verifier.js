@@ -1,3 +1,6 @@
+// A program that verifies the sum and average of even and odd numbers from 0 to 999
+// It counts the total number of even and odd numbers, calculates their sums, and computes their averages.
+
 let contEven=0;
 let contOdd=0;
 let totalOdd=0;

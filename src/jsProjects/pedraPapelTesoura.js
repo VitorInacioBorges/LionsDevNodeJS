@@ -1,3 +1,5 @@
+// a program that implements a simple game of Rock, Paper, Scissors
+
 const escolhas = ['pedra', 'papel', 'tesoura'];
 const readline = require('readline');
 const rl = readline.createInterface({
