@@ -27,6 +27,6 @@ Step-by-Step:
 - After the tools have been installed initialize a git repository in a directory on your machine with your IDE and write in the terminal:
 'git init'.
 - Create a GitHub repository in the site or in your IDE (both ways are fine). 
-- Set your github settings with: 'git config --global user.name "<username>"' and 'git config --global user.email "<email>"'.
+- Set your github settings with: 'git config --global user.name "username"' and 'git config --global user.email "email@gmail.com"'.
 - Clone the repository with: 'git clone https://github.com/VitorInacioBorges/LionsDevNodeJS.git'
 - Open the project file you want to run and in your integrated terminal write: 'node <file_name>'. It should run perfectly in your terminal.
