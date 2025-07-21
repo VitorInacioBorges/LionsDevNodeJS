@@ -6,4 +6,5 @@ The course contains the following subjects:
 - Data Bank with MongoDB
 - FlutterFlow
 - Node.js
+- Git and GitHub
 - etc.
