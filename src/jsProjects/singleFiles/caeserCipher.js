@@ -9,7 +9,7 @@ function caesarCipher(x, y){
 }
 
 function UNceasarCipher(){
-
+    
 }
 
 function encryptSentenceWithCaesarCipher(sentence, number){
@@ -26,7 +26,7 @@ function decryptSentenceWithCaesarCipher(criptedSentence, number){
     let decryptedSentence = '';
     criptedSentence = criptedSentence.toLowerCase();
     for(let i=0; i<decryptedSentence.length; i++){
-        
+
     }
 }
 
